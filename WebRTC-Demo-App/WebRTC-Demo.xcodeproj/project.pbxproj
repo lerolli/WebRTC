@@ -12,6 +12,7 @@
 		2F7EBC3622DCC6430015B46E /* WebSocketProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7EBC3522DCC6430015B46E /* WebSocketProvider.swift */; };
 		2F7EBC3A22DCCE240015B46E /* NativeWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7EBC3922DCCE240015B46E /* NativeWebSocket.swift */; };
 		3A0DFAC62A011DAD00387560 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 3A0DFAC52A011DAD00387560 /* SocketIO */; };
+		3A6998002A174DFE00E7BE39 /* ReactiveVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6997FF2A174DFE00E7BE39 /* ReactiveVideoViewController.swift */; };
 		3AAAA55F2A03D13600EE0370 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAAA55E2A03D13600EE0370 /* MainScreenView.swift */; };
 		3AAAA5612A03D14400EE0370 /* MainScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAAA5602A03D14400EE0370 /* MainScreenPresenter.swift */; };
 		3AACE8042A04BB5800F56A27 /* MainScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AACE8032A04BB5800F56A27 /* MainScreenState.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		2F7EBC3522DCC6430015B46E /* WebSocketProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketProvider.swift; sourceTree = "<group>"; };
 		2F7EBC3922DCCE240015B46E /* NativeWebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeWebSocket.swift; sourceTree = "<group>"; };
+		3A6997FF2A174DFE00E7BE39 /* ReactiveVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveVideoViewController.swift; sourceTree = "<group>"; };
 		3AAAA55E2A03D13600EE0370 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		3AAAA5602A03D14400EE0370 /* MainScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenPresenter.swift; sourceTree = "<group>"; };
 		3AACE8032A04BB5800F56A27 /* MainScreenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenState.swift; sourceTree = "<group>"; };
@@ -90,9 +92,18 @@
 			path = WebSocketProvider;
 			sourceTree = "<group>";
 		};
+		3A6998012A17511700E7BE39 /* VideoScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3A6997FF2A174DFE00E7BE39 /* ReactiveVideoViewController.swift */,
+			);
+			path = VideoScreen;
+			sourceTree = "<group>";
+		};
 		3AACE8022A04BACF00F56A27 /* MainScreenAlemiraArchitecture */ = {
 			isa = PBXGroup;
 			children = (
+				3A6998012A17511700E7BE39 /* VideoScreen */,
 				3AACE80B2A04CC9000F56A27 /* Services */,
 				3AAAA55E2A03D13600EE0370 /* MainScreenView.swift */,
 				3AAAA5602A03D14400EE0370 /* MainScreenPresenter.swift */,
@@ -303,6 +314,7 @@
 				79262EE720B0D6F600D576C1 /* AppDelegate.swift in Sources */,
 				795A4A26221E081A00F8BB03 /* SessionDescription.swift in Sources */,
 				3AAAA55F2A03D13600EE0370 /* MainScreenView.swift in Sources */,
+				3A6998002A174DFE00E7BE39 /* ReactiveVideoViewController.swift in Sources */,
 				79177CA620B1F76E00BCD399 /* RTCStates.swift in Sources */,
 				3ACC68B42A053B400080B0A2 /* RootScreen.swift in Sources */,
 				79177C9920B0DF2700BCD399 /* SignalingClient.swift in Sources */,
@@ -449,7 +461,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WM98BXMW58;
 				INFOPLIST_FILE = "$(SRCROOT)/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -471,7 +483,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WM98BXMW58;
 				INFOPLIST_FILE = "$(SRCROOT)/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

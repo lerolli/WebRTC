@@ -14,6 +14,7 @@ enum MainServicesAction {
     case answerDidTap
     case muteAudio(Bool)
     case muteSpeaker(Bool)
+    case openVideoScreen
 }
 
 enum MainServicesCallback {
@@ -32,6 +33,8 @@ enum MainServicesCallback {
 }
 
 final class MainServices {
+    var navigationController: UINavigationController?
+    
     private let webRTCClient: ReactiveWebRTCClientProtocol
     private let signalClient: ReactiveSignalClientProtocol
     
@@ -39,12 +42,13 @@ final class MainServices {
     private var cancellableBag = Set<AnyCancellable>()
     
     init(
+        navigationController: UINavigationController?,
         webRTCClient: ReactiveWebRTCClientProtocol,
         signalingClient: ReactiveSignalClientProtocol
     ) {
         self.webRTCClient = webRTCClient
         self.signalClient = signalingClient
-        
+        self.navigationController = navigationController
         configureService()
         
         signalClient.dispatch(.connect)
@@ -66,6 +70,10 @@ extension MainServices: MainServicesProtocol {
                 webRTCClient.dispatch(.audioIsMuted(isMuted))
             case let .muteSpeaker(isMuted):
                 webRTCClient.dispatch(.speakerIsMuted(isMuted))
+            case .openVideoScreen:
+                let vc = ReactiveVideoViewController()
+                vc.webRTCClient = webRTCClient
+                navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
@@ -98,7 +106,8 @@ extension MainServices {
 
                 case let .didReceiveData(data):
                     self?.serviceEventSubject.send(.didReceiveMessage(data))
-                case .didDiscoverLocalCandidate(_):
+                case let .didDiscoverLocalCandidate(candidate):
+                    self?.signalClient.dispatch(.sendIceCandidate(candidate))
                     self?.serviceEventSubject.send(.didDiscoverLocalCandidate)
                 case let .didChangeConnectionState(state):
                     self?.serviceEventSubject.send(.changeConnectionState(state))

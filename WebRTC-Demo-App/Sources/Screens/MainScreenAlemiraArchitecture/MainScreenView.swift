@@ -37,16 +37,17 @@ struct MainScreen: View {
                             output.dispatch(.mute)
                         }
                         .padding()
-                        .foregroundColor(Color.black)
                         .background(Color.white)
+                        .disabled(true)
                         
                         Spacer()
                         Button(output.state.speakerIsMuted ? "Unmute speaker" : "Mute speaker") {
                             output.dispatch(.muteSpeaker)
                         }
+                        
                         .padding()
-                        .foregroundColor(Color.black)
                         .background(Color.white)
+                        .disabled(true)
                     }
                     
                     HStack {
@@ -54,8 +55,8 @@ struct MainScreen: View {
                             sendMessageShowed = true
                         }
                         .padding()
-                        .foregroundColor(Color.black)
                         .background(Color.white)
+                        .disabled(true)
                         
                         Spacer()
                         
@@ -63,7 +64,6 @@ struct MainScreen: View {
                             output.dispatch(.openVideo)
                         }
                         .padding()
-                        .foregroundColor(Color.black)
                         .background(Color.white)
                     }
                 }

@@ -15,9 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let presenter = RootScreenPresenter()
         let view = RootScreenView(output: presenter)
         let vc = UIHostingController(rootView: view)
+        let navigationController = UINavigationController(rootViewController: vc)
         
-        presenter.vc = vc
-        window.rootViewController = vc
+        presenter.navigationController = navigationController
+        window.rootViewController = navigationController
 
         window.makeKeyAndVisible()
         self.window = window

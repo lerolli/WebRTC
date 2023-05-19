@@ -1,15 +1,15 @@
 import SwiftUI
 
 final class RootScreenPresenter {
-    var vc: UIViewController?
+    var navigationController: UINavigationController?
     private let config = Config.default
     
     func openUIKit() {
-        vc?.present(buildMainViewController(), animated: true)
+        navigationController?.pushViewController(buildMainViewController(), animated: true)
     }
     
     func openSwiftUI() {
-        vc?.present(MainScreenModule.initialize(), animated: true)
+        navigationController?.pushViewController(MainScreenModule.initialize(navigationController: navigationController), animated: true)
     }
     
     

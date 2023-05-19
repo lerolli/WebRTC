@@ -9,6 +9,10 @@ enum ReactiveWebRTCClientAction {
     case setCandidate(RTCIceCandidate)
     case audioIsMuted(Bool)
     case speakerIsMuted(Bool)
+    
+    case startCaptureLocalVideo(RTCMTLVideoView)
+    case stopCaptureLocalVideo
+    case renderRemoteVideo(RTCMTLVideoView)
 }
 
 enum ReactiveWebRTCClientCallback {
@@ -49,6 +53,12 @@ extension ReactiveWebRTCClient: ReactiveWebRTCClientProtocol {
                 setAudioEnabled(isMuted)
             case let .speakerIsMuted(isMuted):
                 isMuted ? speakerOff() : speakerOn()
+            case let .startCaptureLocalVideo(renderer):
+                startCaptureLocalVideo(renderer: renderer)
+            case let .renderRemoteVideo(rendered):
+                renderRemoteVideo(to: rendered)
+            case .stopCaptureLocalVideo:
+                stopCaptureLocalVideo()
         }
     }
 }
@@ -194,6 +204,11 @@ final class ReactiveWebRTCClient: NSObject {
         self.localVideoTrack?.add(renderer)
     }
     
+    func stopCaptureLocalVideo() {
+        guard let capturer = self.videoCapturer as? RTCCameraVideoCapturer else { return }
+        capturer.stopCapture()
+    }
+    
     func renderRemoteVideo(to renderer: RTCVideoRenderer) {
         remoteVideoTrack?.add(renderer)
     }
@@ -283,7 +298,9 @@ extension ReactiveWebRTCClient: RTCPeerConnectionDelegate {
     
     func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceGatheringState) {}
     
-    func peerConnection(_ peerConnection: RTCPeerConnection, didGenerate candidate: RTCIceCandidate) {}
+    func peerConnection(_ peerConnection: RTCPeerConnection, didGenerate candidate: RTCIceCandidate) {
+        serviceEventSubject.send(.didDiscoverLocalCandidate(candidate))
+    }
     
     func peerConnection(_ peerConnection: RTCPeerConnection, didRemove candidates: [RTCIceCandidate]) {}
     

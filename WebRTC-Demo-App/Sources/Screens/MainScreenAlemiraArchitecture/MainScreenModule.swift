@@ -2,7 +2,7 @@ import SwiftUI
 
 enum MainScreenModule {
     
-    static func initialize() -> UIViewController {
+    static func initialize(navigationController: UINavigationController?) -> UIViewController {
         let config = Config.default
         let webRTCClient = ReactiveWebRTCClient(
             iceServers: config.webRTCIceServers
@@ -13,6 +13,7 @@ enum MainScreenModule {
         let presenter = MainScreenPresenter(
             state: MainScreenState(),
             services: MainServices(
+                navigationController: navigationController,
                 webRTCClient: webRTCClient,
                 signalingClient: signalClient
             )

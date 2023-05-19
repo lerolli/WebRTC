@@ -15,8 +15,6 @@ enum MainScreenViewAction {
     case hideMessage
 }
 
-
-
 final class MainScreenPresenter: ObservableObject {
     @Published var state: MainScreenState
     
@@ -44,7 +42,9 @@ final class MainScreenPresenter: ObservableObject {
             case .sendMessage:
                 break
             case .openVideo:
-                break
+                // костыль, чтобы избежать паттерна
+                // координатор и внедрения swinject
+                services.dispatch(.openVideoScreen)
             case .sendOffer:
                 services.dispatch(.offerDidTap)
             case .sendAnswer:

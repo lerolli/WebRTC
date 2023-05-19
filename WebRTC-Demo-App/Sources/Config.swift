@@ -1,6 +1,6 @@
 import Foundation
 
-fileprivate let defaultSignalingServerUrl = URL(string: "http://localhost:8080")!
+fileprivate let defaultSignalingServerUrl = URL(string: "http://192.168.31.153:8080")!
 
 // We use Google's public stun servers. For production apps you should deploy your own stun/turn servers.
 fileprivate let defaultIceServers = ["stun:stun.l.google.com:19302",

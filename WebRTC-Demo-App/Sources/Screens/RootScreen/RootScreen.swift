@@ -4,16 +4,17 @@ struct RootScreenView: View {
     var output: RootScreenPresenter
     
     var body: some View {
-        VStack {
+        VStack(spacing: 10) {
             Text("Select Screen")
             
-            Button("✅ UIKit via delegate") {
+            Button("UIKit via delegate") {
                 output.openUIKit()
             }
             
-            Button("❌ SwiftUI via alemira architecture ") {
+            Button("SwiftUI via alemira architecture ") {
                 output.openSwiftUI()
             }
+            
         }
     }
 }
