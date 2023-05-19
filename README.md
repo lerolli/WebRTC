@@ -1,5 +1,5 @@
 # WebRTC-iOS
-A simple native WebRTC demo iOS app using swift and Socket.IO. This is a modified version of the app https://github.com/stasel/WebRTC-iOS
+A simple native WebRTC demo iOS app using Swift and Socket.IO. This is a modified version of the app https://github.com/stasel/WebRTC-iOS
 
 ## Starting NodeJS signaling server
     1. Navigate to the `signaling/NodeJS` folder.
